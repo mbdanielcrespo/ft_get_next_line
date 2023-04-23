@@ -1,12 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/23 21:01:45 by danalmei          #+#    #+#             */
+/*   Updated: 2023/04/23 21:01:57 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
 # include <stdlib.h>
 # include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-
-# define BUFFER_SIZE 1024
 
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(char *str);

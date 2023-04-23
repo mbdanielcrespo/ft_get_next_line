@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/23 21:01:38 by danalmei          #+#    #+#             */
+/*   Updated: 2023/04/23 21:11:20 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*ft_read_st_save(int fd, char *st_save)
@@ -19,20 +31,19 @@ char	*ft_read_st_save(int fd, char *st_save)
 		}
 		buff[read_bytes] = '\0';
 		st_save = ft_strjoin(st_save, buff);
-		//printf("fist ft_save? -> %s\n", st_save);
 	}
 	free(buff);
-		return (st_save);
+	return (st_save);
 }
 
 char	*ft_st_save(char *st_save)
 {
-	int	c;
-	int	w;
+	int		c;
+	int		w;
 	char	*s;
 
 	c = 0;
-	while(st_save[c] && st_save[c] != '\n')
+	while (st_save[c] && st_save[c] != '\n')
 		c++;
 	if (!st_save[c])
 	{
@@ -48,9 +59,8 @@ char	*ft_st_save(char *st_save)
 	{
 		s[w++] = st_save[c++];
 	}
-;	s[w] = '\0';
+	s[w] = '\0';
 	free(st_save);
-	//printf("Freeing -> %s\nSaving -> %s\n", st_save, s);
 	return (s);
 }
 
@@ -74,25 +84,25 @@ char	*ft_get_line(char *st_save)
 		c++;
 	}
 	if (st_save[c] == '\n')
-		s[c] = st_save[c++];
+	{
+		s[c] = st_save[c];
+		c++;
+	}
 	s[c] = '\0';
 	return (s);
 }
 
 char	*get_next_line(int fd)
 {
-	char	*line;
+	char		*line;
 	static char	*st_save;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	st_save = ft_read_st_save(fd, st_save);
-	//printf("Save on main function -> %s\n", st_save);
 	if (!st_save)
 		return (NULL);
 	line = ft_get_line(st_save);
-	//printf("Line (get_line) -> %s\n");
 	st_save = ft_st_save(st_save);
-	//printf("St_save (new_st_save) -> %s\n", st_save);
 	return (line);
 }
