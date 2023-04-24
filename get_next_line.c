@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 21:01:38 by danalmei          #+#    #+#             */
-/*   Updated: 2023/04/23 21:11:20 by danalmei         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:39:56 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ char	*ft_st_save(char *st_save)
 		s[w++] = st_save[c++];
 	}
 	s[w] = '\0';
-	free(st_save);
 	return (s);
 }
 
@@ -89,6 +88,7 @@ char	*ft_get_line(char *st_save)
 		c++;
 	}
 	s[c] = '\0';
+	free(st_save);
 	return (s);
 }
 
