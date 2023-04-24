@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 21:01:38 by danalmei          #+#    #+#             */
-/*   Updated: 2023/04/24 13:39:56 by danalmei         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:52:02 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*ft_read_st_save(int fd, char *st_save)
 		if (read_bytes == -1)
 		{
 			free(buff);
+			free(st_save);
 			return (NULL);
 		}
 		buff[read_bytes] = '\0';
@@ -34,6 +35,32 @@ char	*ft_read_st_save(int fd, char *st_save)
 	}
 	free(buff);
 	return (st_save);
+}
+
+char	*ft_get_line(char *st_save)
+{
+	int		c;
+	char	*s;
+
+	c = 0;
+	while (st_save[c] != '\0' && st_save[c] != '\n')
+		c++;
+	s = (char *)malloc(sizeof(char) * (c + 2));
+	if (!s)
+		return (NULL);
+	c = 0;
+	while (st_save[c] != '\0' && st_save[c] != '\n')
+	{
+		s[c] = st_save[c];
+		c++;
+	}
+	if (st_save[c] == '\n')
+	{
+		s[c] = st_save[c];
+		c++;
+	}
+	s[c] = '\0';
+	return (s);
 }
 
 char	*ft_st_save(char *st_save)
@@ -56,38 +83,8 @@ char	*ft_st_save(char *st_save)
 	c++;
 	w = 0;
 	while (st_save[c])
-	{
 		s[w++] = st_save[c++];
-	}
 	s[w] = '\0';
-	return (s);
-}
-
-char	*ft_get_line(char *st_save)
-{
-	int		c;
-	char	*s;
-
-	c = 0;
-	if (!st_save[c])
-		return (NULL);
-	while (st_save[c] && st_save[c] != '\n')
-		c++;
-	s = (char *)malloc(sizeof(char) * (c + 2));
-	if (!s)
-		return (NULL);
-	c = 0;
-	while (st_save[c] && st_save[c] != '\n')
-	{
-		s[c] = st_save[c];
-		c++;
-	}
-	if (st_save[c] == '\n')
-	{
-		s[c] = st_save[c];
-		c++;
-	}
-	s[c] = '\0';
 	free(st_save);
 	return (s);
 }
@@ -104,5 +101,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_get_line(st_save);
 	st_save = ft_st_save(st_save);
+	if (!line || !*line)
+	{
+		free(line);
+		line = NULL;
+	}
 	return (line);
 }
