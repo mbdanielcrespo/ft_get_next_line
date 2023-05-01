@@ -6,11 +6,14 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 21:01:38 by danalmei          #+#    #+#             */
-/*   Updated: 2023/04/24 17:52:02 by danalmei         ###   ########.fr       */
+/*   Updated: 2023/05/01 16:05:02 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1024
+#endif
 
 char	*ft_read_st_save(int fd, char *st_save)
 {
@@ -104,7 +107,7 @@ char	*get_next_line(int fd)
 	if (!line || !*line)
 	{
 		free(line);
-		line = NULL;
+		return (NULL);
 	}
 	return (line);
 }

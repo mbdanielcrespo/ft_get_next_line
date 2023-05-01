@@ -6,13 +6,13 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 21:01:45 by danalmei          #+#    #+#             */
-/*   Updated: 2023/04/24 16:41:05 by danalmei         ###   ########.fr       */
+/*   Updated: 2023/05/01 16:06:28 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-//# define BUFFER_SIZE 1024
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
