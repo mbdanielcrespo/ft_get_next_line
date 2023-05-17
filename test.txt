@@ -1,5 +1,0 @@
-Hello, this is the first line.
-And here comes the second line.
-The third line is also here.
-This is the fourth line.
-Finally, the fifth line.
