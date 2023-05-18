@@ -17,8 +17,8 @@ The function ```ft_get_line``` is used to extract a line from ```st_save```. It 
 
 The function ```ft_st_save``` is used to update ```st_save``` by removing the line that was just read.
 
-### **Usage**
+## **Usage**
 To use this function, include the get_next_line.h header file in your program, and then call the get_next_line function with a file descriptor as the argument. The function will return the next line from the file descriptor on each subsequent call, until there are no more lines to return.
 
-### **Note**
+## **Note**
 This project uses some functions from the libft library, a project at 42 school where students create their own library of useful functions in C. The Makefile is used to compile the library with the project files.
